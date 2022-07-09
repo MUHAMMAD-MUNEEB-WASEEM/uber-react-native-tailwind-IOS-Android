@@ -2,7 +2,7 @@ import { View, Text, TouchableOpacity, FlatList, Image } from 'react-native'
 import React from 'react'
 import tw from 'twrnc';
 import { ArrowRightOutlined } from '@ant-design/icons';
-
+import { useNavigation } from '@react-navigation/native';
 const data = [
     {
         id: "123",
@@ -24,6 +24,9 @@ const data = [
 ]
 
 const NavOptions = () => {
+
+    const navigation = useNavigation();
+
   return (
     <FlatList
     keyExtractor={(item)=> item.id}
@@ -31,6 +34,7 @@ const NavOptions = () => {
     horizontal
     renderItem={({item})=>(
         <TouchableOpacity 
+        onPress={()=>navigation.navigate(item.screen)}
         style={tw`p-2 pl-6 pb-8 pt-4 bg-gray-200 m-2 w-40`}
         >
             <View>
